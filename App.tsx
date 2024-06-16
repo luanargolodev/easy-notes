@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
-import { Home } from "./src/screen/home"
-import { initializeDb } from "./src/screen/home/services/db"
+import { Home } from "./src/screen/Home"
+import { initializeDb } from "./src/screen/Home/services/db"
 import { SafeAreaView, Text } from "react-native"
 
 export default function App() {
