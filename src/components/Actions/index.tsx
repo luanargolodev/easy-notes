@@ -3,13 +3,15 @@ import { View, Text, StyleSheet, Pressable } from 'react-native'
 
 interface Props {
   filter: boolean;
+  setFilter: (status: boolean) => void;
 }
 
-export function Actions({ filter }: Props) {
+export function Actions({ filter, setFilter }: Props) {
   const [status, setStatus] = useState(filter)
 
   function handleAction(item: boolean) {
     setStatus(item)
+    setFilter(item)
   }
 
   return (

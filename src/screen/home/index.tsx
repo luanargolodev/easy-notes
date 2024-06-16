@@ -17,9 +17,10 @@ export function Home() {
 
         <FormTask />
 
-        <Actions filter={filter} />
+        <Actions filter={filter} setFilter={(status) => setFilter(status)} />
 
-        <Tasks filter={filter} />
+        {filter && <Tasks filter={filter} />}
+        {!filter && <Tasks filter={filter} />}
       </SafeAreaView>
     </>
   )

@@ -36,9 +36,11 @@ export function TaskList({ data }: Props) {
           <Ionicons name="trash-outline" size={16} color="#fff" />
         </Pressable>
 
-        <Pressable style={styles.buttonComplete} onPress={handleUpdateStatus}>
-          <Ionicons name="checkmark-outline" size={16} color="#fff" />
-        </Pressable>
+        {!data.completed && (
+          <Pressable style={styles.buttonComplete} onPress={handleUpdateStatus}>
+            <Ionicons name="checkmark-outline" size={16} color="#fff" />
+          </Pressable>
+        )}
       </View>
     </View>
   )
