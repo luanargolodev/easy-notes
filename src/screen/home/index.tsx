@@ -1,8 +1,12 @@
+import { useState } from "react"
 import { SafeAreaView, StatusBar, StyleSheet, Text } from "react-native"
 import { FormTask } from "../../components/Form"
 import { Tasks } from "../../components/Tasks"
+import { Actions } from "../../components/Actions"
 
 export function Home() {
+  const [filter, setFilter] = useState(false)
+
   return (
     <>
       <StatusBar backgroundColor="#0f172a" barStyle="light-content" />
@@ -13,7 +17,9 @@ export function Home() {
 
         <FormTask />
 
-        <Tasks />
+        <Actions filter={filter} />
+
+        <Tasks filter={filter} />
       </SafeAreaView>
     </>
   )

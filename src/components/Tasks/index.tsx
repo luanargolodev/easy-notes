@@ -2,8 +2,16 @@ import { View, Text, StyleSheet, FlatList } from 'react-native'
 import { prismaClient } from '../../screen/Home/services/db'
 import { TaskList } from './list';
 
-export function Tasks() {
-  const tasks = prismaClient.task.useFindMany();
+interface Props {
+  filter: boolean;
+}
+
+export function Tasks({ filter } : Props) {
+  const tasks = prismaClient.task.useFindMany({
+    where: {
+      completed: filter,
+    }
+  });
 
   return (
     <FlatList
