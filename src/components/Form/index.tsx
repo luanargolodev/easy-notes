@@ -1,12 +1,35 @@
 import { useState } from 'react'
-import { View, Text, TextInput, StyleSheet, Pressable } from 'react-native'
+import { View, Text, TextInput, StyleSheet, Pressable, Keyboard } from 'react-native'
 import { Ionicons } from "@expo/vector-icons";
+import { prismaClient } from '../../screen/Home/services/db';
 
-export default function FormTask() {
+export function FormTask() {
   const [task, setTask] = useState("");
 
-  function handleNewTask() {
-    console.log("TESTE", task)
+  async function handleNewTask() {
+    if (task.trim() === "") {
+      return;
+    }
+
+    const hasTask = await prismaClient.task.findFirst({
+      where: {
+        name: task,
+      }
+    })
+
+    if (hasTask) {
+      return;
+    }
+
+    await prismaClient.task.create({
+      data: {
+        name: task,
+        completed: false,
+      }
+    })
+
+    setTask("");
+    Keyboard.dismiss();
   }
 
   return (

@@ -1,5 +1,6 @@
 import { SafeAreaView, StatusBar, StyleSheet, Text } from "react-native"
-import FormTask from "../../components/Form"
+import { FormTask } from "../../components/Form"
+import { Tasks } from "../../components/Tasks"
 
 export function Home() {
   return (
@@ -11,6 +12,8 @@ export function Home() {
         <Text style={styles.text}>Crie e gerencie suas tarefas</Text>
 
         <FormTask />
+
+        <Tasks />
       </SafeAreaView>
     </>
   )
